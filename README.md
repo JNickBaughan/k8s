@@ -33,7 +33,14 @@ V1 allows [ componentStatus, configMap, Endpoints, Event, Namespace, Pod, plus m
 
 apps/v1 allows [ ControllerRevision, StatefulSet ]
 
-What is a pod?
+### What is a pod?
+
 After installing miniKube and running the start command a new virtual machine is running on my local environment. This VM is known as a node.
 
-kuberenetes uses this node to run different objects
+kuberenetes uses this node to run different objects.
+
+use kubeCTL to load our yaml file and create a pod on the node
+
+a pod is a grouping of containers with a specific purpose
+
+why would
