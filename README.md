@@ -43,4 +43,22 @@ use kubeCTL to load our yaml file and create a pod on the node
 
 a pod is a grouping of containers with a specific purpose
 
-why would
+e.g. - a database container with support containers like logging and backup. An application and a database would not be in the same pod
+
+in kubernetes we can only deploy a container in a pod
+
+### client-pod.yaml
+
+this file is creating a "pod" and we create one container within it
+
+the ports property exposes port 3000 but we need the client-node-port.yaml to actually expose it to the outside world
+
+### client-node-port.yaml
+
+another type of object type in kubernetes is "Services"
+
+services sets up networking in a kubernetes cluster
+
+there are four types of subtypes of services [ ClusterIP, NodePort, LoadBalancer, Ingress ]
+
+NodePort -> exposes a container to the outside world, only good for development purposes
