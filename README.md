@@ -47,13 +47,15 @@ e.g. - a database container with support containers like logging and backup. An 
 
 in kubernetes we can only deploy a container in a pod
 
-### client-pod.yaml
+### client-pod.yaml -> creates a pod object
 
 this file is creating a "pod" and we create one container within it
 
 the ports property exposes port 3000 but we need the client-node-port.yaml to actually expose it to the outside world
 
-### client-node-port.yaml
+metadata section name property is identifier used in kubeCTL
+
+### client-node-port.yaml -> creates a service object
 
 another type of object type in kubernetes is "Services"
 
@@ -62,3 +64,22 @@ services sets up networking in a kubernetes cluster
 there are four types of subtypes of services [ ClusterIP, NodePort, LoadBalancer, Ingress ]
 
 NodePort -> exposes a container to the outside world, only good for development purposes
+
+browser connects to Kubernetes Node via kube proxy
+
+kube proxy is built into kubernetes, it is the only window to the outside - decides where to route it
+
+from there it goes to our service NodePort
+
+our service NodePort will push our request to our pod via port 3000 and to our container
+
+this is setup using the label selector system
+
+client-node-port.yaml has a selector of component: web, this maps to client-pod.yaml metadata -> labels: component: web
+
+label is arbitrary- it could be container: client, or pod: service - as long as they match
+
+ports sections -> describes ports that need to be opened up on the target object
+
+targetPort is identified to
+port is
