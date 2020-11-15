@@ -108,3 +108,13 @@ now we can see running objects by running command
 kubectl get services
 or
 kubectl get pods
+
+# to access
+
+open cmd as an adminstrator, navigate to directory with yaml files and run
+
+minikube ip
+
+this will give you an ip address that your minikub instance is running on
+
+but since Im using docker desktop kubernetes Just access through localhost
