@@ -81,5 +81,30 @@ label is arbitrary- it could be container: client, or pod: service - as long as 
 
 ports sections -> describes ports that need to be opened up on the target object
 
-targetPort is identified to
-port is
+targetPort is what we want to open traffic up to on the client pod
+port is what another pod in the cluster would use to get access to the client pod // not used in this app
+nodePort is what we would use in the browser to test the client pod
+
+nodePort will be randomly added if we don't config one
+must be between 30000 - 32767
+this is partly why we don't use kubectl in production
+
+\*note
+to get kubectl commands running I enabled kubernetes in docker and then ran
+kubectl config get-contexts
+kubectl config use-context docker-desktop
+to point kubectl to docker's kubernetes
+
+https://stackoverflow.com/questions/54012973/kubernetes-error-unable-to-connect-to-the-server-dial-tcp-127-0-0-18080
+
+# running everything
+
+open cmd as an adminstrator, navigate to directory with yaml files and run
+kubectl apply -f client-pod.yaml
+kubectl apply -f client-node-port.yaml
+
+now we can see running objects by running command
+
+kubectl get services
+or
+kubectl get pods
