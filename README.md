@@ -33,7 +33,7 @@ V1 allows [ componentStatus, configMap, Endpoints, Event, Namespace, Pod, plus m
 
 apps/v1 allows [ ControllerRevision, StatefulSet ]
 
-### What is a pod?
+## What is a pod?
 
 After installing miniKube and running the start command a new virtual machine is running on my local environment. This VM is known as a node.
 
@@ -47,7 +47,7 @@ e.g. - a database container with support containers like logging and backup. An 
 
 in kubernetes we can only deploy a container in a pod
 
-### client-pod.yaml -> creates a pod object
+## client-pod.yaml -> creates a pod object
 
 this file is creating a "pod" and we create one container within it
 
@@ -55,7 +55,7 @@ the ports property exposes port 3000 but we need the client-node-port.yaml to ac
 
 metadata section name property is identifier used in kubeCTL
 
-### client-node-port.yaml -> creates a service object
+## client-node-port.yaml -> creates a service object
 
 another type of object type in kubernetes is "Services"
 
@@ -97,7 +97,7 @@ to point kubectl to docker's kubernetes
 
 https://stackoverflow.com/questions/54012973/kubernetes-error-unable-to-connect-to-the-server-dial-tcp-127-0-0-18080
 
-# running everything
+## running everything
 
 open cmd as an adminstrator, navigate to directory with yaml files and run
 kubectl apply -f client-pod.yaml
@@ -109,7 +109,7 @@ kubectl get services
 or
 kubectl get pods
 
-# to access
+## to access
 
 open cmd as an adminstrator, navigate to directory with yaml files and run
 
@@ -118,3 +118,15 @@ minikube ip
 this will give you an ip address that your minikub instance is running on
 
 but since Im using docker desktop kubernetes Just access through localhost
+
+## what happened when we fed config to kubeCTL?
+
+our deployment file goes through the 'Master'(kube-apiserver)
+
+kubeCTL send our yaml file to the master
+
+the master gets a node to create the container
+
+the node will reach out to Docker Hub and get the image and create the container
+
+if the container crashes the master will restart it
